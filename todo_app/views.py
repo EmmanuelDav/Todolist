@@ -1,5 +1,5 @@
 from typing import Any, Dict
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 from django.views.generic import (
     ListView,
@@ -85,8 +85,6 @@ class ItemUpdate(UpdateView):
 
 class ListDelete(DeleteView):
     model = ToDoList
-    # You have to use reverse_lazy() instead of reverse(),
-    # as the urls are not loaded when the file is imported.
     success_url = reverse_lazy("index")
 
 class ItemDelete(DeleteView):
